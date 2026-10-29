@@ -1,0 +1,9 @@
+[project]
+name = "chippack-si-pi"
+version = "0.1.0"
+description = "Modeled signal/power integrity, thermal and warpage analysis for advanced packaging"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
