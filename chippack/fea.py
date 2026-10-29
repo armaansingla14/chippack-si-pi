@@ -107,6 +107,8 @@ def solve(blocks: list[Block], dT: float, nx: int = 120, ny_per_mm: float | None
 
     The y-mesh resolves every block interface with ``y_breaks_n`` elements per layer.
     """
+    # snap coordinates to 0.1 nm so floating-point near-duplicates do not create sliver layers
+    blocks = [Block(b.material, round(b.x0, 10), round(b.x1, 10), round(b.y0, 10), round(b.y1, 10)) for b in blocks]
     x_max = max(b.x1 for b in blocks)
     ys = sorted({b.y0 for b in blocks} | {b.y1 for b in blocks})
     y_nodes = [ys[0]]
